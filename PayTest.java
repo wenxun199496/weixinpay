@@ -55,7 +55,7 @@ public class PayTest{
 		parameters.put("notify_url", notify_url);
 		parameters.put("trade_type", trade_type);
 		parameters.put("spbill_create_ip",spbill_create_ip);
-		
+		//第一次签名
 		String sign = WXSignUtils.createSign("UTF-8", parameters);
 
 		Unifiedorder unifiedorder = new Unifiedorder();
@@ -77,7 +77,7 @@ public class PayTest{
 		Map<String, String> restmap = null;
 		String weixinPost = null;
 		try{
-			//第一次签名  请求prepay_id
+			//第一次请求微信服务器。请求prepay_id（预下单）
 			weixinPost = HttpXmlUtils.httpsRequest(PaymaxConfig.WX_URL, PaymaxConfig.POST, HttpXmlUtils.xmlInfo(unifiedorder)).toString();			
 			restmap = XMLUtil.doXMLParse(weixinPost);
 		}catch(Exception e){
@@ -92,13 +92,14 @@ public class PayTest{
             payMap.put("package", "Sign=WXPay");
             payMap.put("noncestr", restmap.get("nonce_str"));
             payMap.put("timestamp", payTimestamp());
-			//请求到prepay_id后，进行新参数二次签名；
+	    //请求到prepay_id后，进行新参数二次签名；
             payMap.put("sign",WXSignUtils.createSign("UTF-8",payMap));
         }else{
         	log.info("二次签名出现异常");
         	return "ERROR";
         }
-        JSONObject payjson = maptojson(payMap);
+		//签名完成后直接把信息给前端，前端用payjson去吊起微信
+        	JSONObject payjson = maptojson(payMap);
 		log.info(payjson);
 		return payjson.toJSONString();
 	}
