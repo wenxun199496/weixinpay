@@ -18,7 +18,7 @@ public class WXSignUtils {
 	//http://mch.weixin.qq.com/wiki/doc/api/index.php?chapter=4_3
 	//商户Key：改成公司申请的即可
 	//32位密码设置地址：  jdex1hvufnm1sdcb0e81t36k0d0f15nc 2irwoj0xjlt6a4vqecvq02hy5enzsrd5
-	private static String Key = "bangxuepaixinxikejiyouxiangongsi";
+	private static String Key = "公司微信商户的api密钥";
 
 	/**
 	 * 微信支付签名算法sign
