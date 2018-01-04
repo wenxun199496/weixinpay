@@ -32,7 +32,7 @@ public class PayTest{
 		String detail = (String) map.get("subject");
 		String attach = JSON.toJSONString(map.get("metadata"));
 		String out_trade_no = (String)map.get("order_no");
-		int total_fee = Integer.valueOf((String)map.get("amount"));//单位是分，即是0.01元,前端转化为元
+		int total_fee = Integer.valueOf((String)map.get("amount"));//单位是分，即是0.01元,前端转化为元（如果是1元前端传递的amount应该是100）
 		String spbill_create_ip = (String)map.get("client_ip");
 		String time_start = RandCharsUtils.timeStart();
 		String time_expire = RandCharsUtils.timeExpire();
