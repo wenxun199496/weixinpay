@@ -44,6 +44,6 @@ public class WXSignUtils {
 		sb.append("key=" + Key);
 		System.out.println("字符串拼接后是："+sb.toString());
 		String sign = MD5Util.MD5Encode(sb.toString(), characterEncoding).toUpperCase();
-		return sign;
+		return sign; 
 	}
 }
