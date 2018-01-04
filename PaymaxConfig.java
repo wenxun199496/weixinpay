@@ -7,9 +7,9 @@ public class PaymaxConfig {
     
 	
 	/**微信appid**/
-	public static final String WX_APPID = "通过审核的appid";//"wx3f790c443fa6039a";
+	public static final String WX_APPID = "通过审核的appid";
 	/**微信商户号**/
-	public static final String WX_MCHID = "商户号";//"1392770602";
+	public static final String WX_MCHID = "商户号";
 	/**异步通知地址**/
 	public static final String WX_NOTIFYURL ="填写自己的异步通知地址";
 	/**微信支付方式**/
